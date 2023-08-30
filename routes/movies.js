@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  middlewareMovieId, middlewareCreateMovie,
+  middlewareDeleteMovieById, middlewareCreateMovie,
 } = require('../middleware/regex');
 
 const {
@@ -9,6 +9,6 @@ const {
 
 router.get('/', getMovies);
 router.post('/', middlewareCreateMovie, createMovie);
-router.delete('/:_Id', middlewareMovieId, deleteMovieById);
+router.delete('/:_id', middlewareDeleteMovieById, deleteMovieById);
 
 module.exports = router;

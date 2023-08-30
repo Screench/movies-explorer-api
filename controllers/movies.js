@@ -48,20 +48,22 @@ const createMovie = (req, res, next) => {
       return next(err);
     });
 };
-
 const deleteMovieById = (req, res, next) => {
   Movie.findById(req.params._id)
     .then((movie) => {
       if (!movie) {
-        throw new NotFoundError('Нет такого видео');
-      } else if (String(movie.owner) !== String(req.user._id)) {
-        throw new ForbiddenError('Запрещено');
-      } else {
-        return Movie.findByIdAndRemove(movie._id);
+        throw new NotFoundError('Нет такой карточки');
       }
+      if (String(movie.owner) !== String(req.user._id)) {
+        throw new ForbiddenError('Запрещено');
+      }
+      return Movie.findByIdAndRemove(movie._id);
     })
     .then((deletedMovie) => {
-      res.send(deletedMovie);
+      if (!deletedMovie) {
+        throw new Error('Удаления не произошло');
+      }
+      res.status(200).send({ message: 'Успешно удалено' });
     })
     .catch((err) => {
       if (err.name === 'CastError') {

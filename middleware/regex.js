@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const regExp = /^(http|https):\/\/(?:www\.)?[a-zA-Z0-9._~:?\-@!$&'()*+,;=]+$/;
+const regExp = /^(https?):\/\/(?:www\.)?[\w.-]+(?:\.[a-zA-Z]+)+\/[\w#!:.?+=&%@!\-/]+$/;
 
 const middlewareCreateMovie = celebrate({
   body: Joi.object().keys({
@@ -33,9 +33,9 @@ const middlewareLogin = celebrate({
   }),
 });
 
-const middlewareMovieId = celebrate({
+const middlewareDeleteMovieById = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().length(24).hex().required(),
+    _id: Joi.string().length(24).hex().required(),
   }),
 });
 
@@ -50,6 +50,6 @@ module.exports = {
   middlewareCreateMovie,
   middlewareCreateUser,
   middlewareLogin,
-  middlewareMovieId,
+  middlewareDeleteMovieById,
   middlewareProfileUpdate,
 };
