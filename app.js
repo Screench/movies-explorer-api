@@ -22,12 +22,6 @@ app.use(requestLogger);
 app.use(cookieParser());
 app.use(cors(CORS_SETTINGS));
 
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер проходит краш тест');
-//   }, 0);
-// });
-
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
