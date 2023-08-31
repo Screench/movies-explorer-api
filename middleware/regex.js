@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const regExp = /^(https?):\/\/(?:www\.)?[\w.-]+(?:\.[a-zA-Z]+)+\/[\w#!:.?+=&%@!\-/]+$/;
+const regExp = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
 
 const middlewareCreateMovie = celebrate({
   body: Joi.object().keys({
