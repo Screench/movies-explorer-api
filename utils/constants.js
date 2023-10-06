@@ -9,8 +9,11 @@ const CORS_SETTINGS = {
   origin: [
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://localhost:3000',
+    'https://localhost:3001',
     'http://api.diploma.nomoredomainsicu.ru',
     'https://api.diploma.nomoredomainsicu.ru',
+    'https://diploma.nomoredomainsicu.ru',
   ],
   credentials: true,
 };
